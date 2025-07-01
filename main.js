@@ -1,7 +1,7 @@
 (function () {
   const content = document.getElementById('content');
-  const audios = ['bell', 'around', 'the', 'up'].map(id => document.getElementById(id));
-  pressedE = false;
+    const audios = ['bell', 'around', 'the', 'up'].map(id => document.getElementById(id));
+    let pressedE = false;
 
   let clickCount = 0;
 
@@ -32,12 +32,17 @@
 
     function handleKeyPresses() {
         document.addEventListener('keydown', (event) => {
-            key = event.key;
+            const key = event.key.toLowerCase();
+            if (key === 'e' && !pressedE) {
+                showMessage('Very good.');
+                pressedE = true;
+                const body = document.body;
+                body.style.backgroundImage = "url('assets/monster.webp')";
+                body.style.backgroundSize = 'cover';
+                body.style.backgroundPosition = 'center';
+                body.style.backgroundRepeat = 'no-repeat';
+            }
         });
-        if (key === 'e' && !pressedE) {
-            showMessage('Very good.');
-            pressedE = true;
-        }
     }
 
     function showMessage(text = 'Hello.') {
