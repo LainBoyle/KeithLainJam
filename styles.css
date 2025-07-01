@@ -2,15 +2,20 @@ body {
   margin: 0;
   padding: 0;
   background-color: #000;
-  color: #fff;
+  color: #a4a4a4;
   display: flex;
   align-items: center;
   justify-content: center;
   height: 100vh;
-  font-family: Arial, sans-serif;
+  font-family: 'Special Elite';
 }
 
 #content {
   text-align: center;
   font-size: 2rem;
+}
+
+.fade-out {
+  opacity: 0;
+  transition: opacity 1s ease;
 }

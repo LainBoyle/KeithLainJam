@@ -1,6 +1,6 @@
 (function () {
   const content = document.getElementById('content');
-  const audios = ['audio1', 'audio2', 'audio3'].map(id => document.getElementById(id));
+  const audios = ['bell', 'audio2', 'audio3'].map(id => document.getElementById(id));
 
   let clickCount = 0;
 
@@ -16,48 +16,36 @@
     });
   }
 
-  function setupVolumes() {
-    const controls = document.createElement('div');
-    audios.forEach((audio, index) => {
-      const label = document.createElement('label');
-      label.textContent = `Audio ${index + 1} volume:`;
-      const input = document.createElement('input');
-      input.type = 'range';
-      input.min = 0;
-      input.max = 1;
-      input.step = 0.01;
-      input.value = audio.volume;
-      input.addEventListener('input', () => {
-        audio.volume = input.value;
-      });
-      label.appendChild(input);
-      controls.appendChild(label);
-      controls.appendChild(document.createElement('br'));
-    });
-    document.body.appendChild(controls);
-  }
 
   function handleClicks() {
     document.addEventListener('click', () => {
       clickCount += 1;
-      if (clickCount === 20) {
-        const notice = document.createElement('p');
-        notice.textContent = 'Stop clicking.';
-        content.appendChild(notice);
+      if (clickCount === 1) {
+        playAll(); // Start audio on first click
+      }
+      else if (clickCount === 5) {
+        showMessage('Stop clicking.');
       }
     });
   }
 
-  function showMessage() {
+  function showMessage(text = 'Hello.') {
     const message = document.createElement('p');
-    message.textContent = 'Hello!';
+    message.textContent = text;
     content.appendChild(message);
+
+    setTimeout(() => {
+      message.classList.add('fade-out');
+      // Remove the element after fade-out transition (1s)
+      setTimeout(() => {
+        message.remove();
+      }, 1000);
+    }, 4000);
   }
 
   window.addEventListener('load', () => {
-    playAll();
-    setupVolumes();
     handleClicks();
+    playAll();
     setTimeout(showMessage, 10000);
   });
 })();
