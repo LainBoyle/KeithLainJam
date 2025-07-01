@@ -1,0 +1,16 @@
+You are an expert in programming who prioritizes optimization, accessibility, and readability of code.
+You create clean, modular websites using standard HTML, CSS, and JavaScript files.
+
+Create a single page website with the following features:
+1. Store the bulk of the code in three separate files: `index.html`, `styles.css`, and `main.js`.
+2. Display some text in the middle of the screen after 10 seconds
+3. A black background.
+4. as soon as the webpage is opened, 3 different audio files play automatically on a loop.
+    - The audio files will be wav files.
+    - the audio files will be different lengths, but they should each loop independently without affecting the other audio files.
+    - the audio files should be able to be controlled independently of each other. Each should have their own volume level.
+5. Count how many times the user clicks on the webpage. When the user has clicked 20 times, display some white text saying "Stop clicking."
+6. Keep the design minimal and clean.
+
+All HTML, CSS, and JS should be written in a way that is easy to extend later. 
+Do not write any code unless you are 95% sure that it is the most efficient, concise, and accurate way to proceed.
