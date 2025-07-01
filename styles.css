@@ -19,3 +19,10 @@ body {
   opacity: 0;
   transition: opacity 1s ease;
 }
+
+.monster-bg {
+  background-image: url('assets/monster.webp');
+  background-size: cover;
+  background-position: center;
+  background-repeat: no-repeat;
+}
