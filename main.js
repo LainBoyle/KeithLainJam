@@ -1,6 +1,7 @@
 (function () {
   const content = document.getElementById('content');
-  const audios = ['bell', 'audio2', 'audio3'].map(id => document.getElementById(id));
+  const audios = ['bell', 'around', 'the', 'up'].map(id => document.getElementById(id));
+  pressedE = false;
 
   let clickCount = 0;
 
@@ -29,23 +30,39 @@
     });
   }
 
-  function showMessage(text = 'Hello.') {
-    const message = document.createElement('p');
-    message.textContent = text;
-    content.appendChild(message);
+    function handleKeyPresses() {
+        document.addEventListener('keydown', (event) => {
+            key = event.key;
+        });
+        if (key === 'e' && !pressedE) {
+            showMessage('Very good.');
+            pressedE = true;
+        }
+    }
 
-    setTimeout(() => {
-      message.classList.add('fade-out');
-      // Remove the element after fade-out transition (1s)
-      setTimeout(() => {
-        message.remove();
-      }, 1000);
-    }, 4000);
+    function showMessage(text = 'Hello.') {
+        const message = document.createElement('p');
+        message.textContent = text;
+        content.appendChild(message);
+
+        setTimeout(() => {
+        message.classList.add('fade-out');
+        // Remove the element after fade-out transition (1s)
+        setTimeout(() => {
+            message.remove();
+        }, 1000);
+        }, 4000);
   }
 
   window.addEventListener('load', () => {
     handleClicks();
+    handleKeyPresses();
     playAll();
     setTimeout(showMessage, 10000);
+    setTimeout(() => {
+        if (!pressedE){
+            showMessage('Press E to continue.');
+        }
+    }, 20000);
   });
 })();
